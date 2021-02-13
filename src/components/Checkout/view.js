@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Product } from '../Product';
 
-export const CheckoutView = ({ products, totalPrice, updatecheckedOutProducts }) => (
+export const CheckoutView = ({ products, totalPrice, updateCheckedOutProducts }) => (
     <div>
         <div>
             <Link to="/">Return to shopping</Link>
@@ -17,7 +17,7 @@ export const CheckoutView = ({ products, totalPrice, updatecheckedOutProducts })
             products.map(productData => (
                 <Product
                     key={productData.productId}
-                    { ...{...productData, updatecheckedOutProducts} }
+                    { ...{...productData, updateCheckedOutProducts} }
                 />
             ))
         }

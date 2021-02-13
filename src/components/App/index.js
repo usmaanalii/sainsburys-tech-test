@@ -16,7 +16,7 @@ export const App = () => {
             .then(products => updateProducts(products.map(productData => ({...productData, checkedOut: false}))));
     }, []);
 
-    const updatecheckedOutProducts = id => {
+    const updateCheckedOutProducts = id => {
         const updatedProducts = products.map(product => (
             product.productId === id ? { ...product, checkedOut: !product.checkedOut } : product
         ));
@@ -25,7 +25,7 @@ export const App = () => {
     };
     
     return (
-        <ProductsContext.Provider value={{ products, updatecheckedOutProducts }}>
+        <ProductsContext.Provider value={{ products, updateCheckedOutProducts }}>
             <Router>
                 <Switch>
                     <Route path="/checkout" component={ Checkout } />

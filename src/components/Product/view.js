@@ -11,7 +11,7 @@ export const ProductView = ({
     price,
     image,
     checkedOut,
-    updatecheckedOutProducts
+    updateCheckedOutProducts
 }) => (
     <div className={ styles.container }>
         <img alt="product" src={ image } />
@@ -22,7 +22,7 @@ export const ProductView = ({
 
         <Button
             checkedOut={ checkedOut }
-            onClickHandler={ () => updatecheckedOutProducts(productId) }
+            onClickHandler={ () => updateCheckedOutProducts(productId) }
         />
     </div>
 );
