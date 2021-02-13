@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { ProductsContext } from '../../context';
+
 import { Home } from '../Home';
 import { Checkout } from '../Checkout';
+
 
 export const App = () => {
     const [products, updateProducts] = useState([]);
@@ -13,33 +16,23 @@ export const App = () => {
             .then(products => updateProducts(products.map(productData => ({...productData, checkedOut: false}))));
     }, []);
 
-    const checkedOutProducts = products.filter(({ checkedOut }) => checkedOut);
-
-    const handleUpdateCheckedOutProducts = id => {
+    const updatecheckedOutProducts = id => {
         const updatedProducts = products.map(product => (
             product.productId === id ? { ...product, checkedOut: !product.checkedOut } : product
         ));
-        
+
         return updateProducts(updatedProducts);
     };
     
     return (
-        <Router>
-            <Switch>
-            <Route path="/checkout">
-                <Checkout
-                    products={ checkedOutProducts }
-                    updatecheckedOutProducts={ handleUpdateCheckedOutProducts }
-                />
-            </Route>
+        <ProductsContext.Provider value={{ products, updatecheckedOutProducts }}>
+            <Router>
+                <Switch>
+                    <Route path="/checkout" component={ Checkout } />
 
-            <Route path="/">
-                <Home
-                    products={ products }
-                    updatecheckedOutProducts={ handleUpdateCheckedOutProducts }
-                />
-            </Route>
-            </Switch>
-        </Router>
+                    <Route path="/" component={ Home } />
+                </Switch>
+            </Router>
+        </ProductsContext.Provider>
     )
 }
