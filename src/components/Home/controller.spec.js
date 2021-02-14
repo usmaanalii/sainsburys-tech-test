@@ -4,13 +4,9 @@ import { shallow } from "enzyme";
 const mockedFirstProduct = {
     checkedOut: true
 };
-
 const mockedSecondProduct = {
     checkedOut: false
 };
-
-const actualNumberOfCheckedOutProduct = 1;
-
 const mockedProducts = [mockedFirstProduct, mockedSecondProduct];
 
 const MockedHomeView = () => 'some mocked home view';
@@ -19,10 +15,15 @@ const MockedProductsContext = {
     updateCheckedOutProducts: 'some mocked update checked out products'
 };
 
+const expectedNumberOfCheckedOutProduct = 1;
+const expectedDocumentTitle = 'Shopping home page';
+
 describe('Given the home controller component', () => {
     let HomeController;
 
     beforeEach(() => {
+        document.title = '';
+        
         jest.doMock('react', () => ({
             ...React,
             useContext: () => MockedProductsContext
@@ -55,12 +56,16 @@ describe('Given the home controller component', () => {
                 expect(actualComponent.type()).toBe(MockedHomeView);
             });
 
+            it('Then it should have set the document title to the expected value', () => {
+                expect(document.title).toBe(expectedDocumentTitle);
+            });
+
             it('Then should contain the expected products', () => {
                 expect(actualComponent.prop('products')).toEqual(mockedProducts);
             });
 
             it('Then should contain the actual number of checked out products', () => {
-                expect(actualComponent.prop('numberOfCheckedOutProducts')).toEqual(actualNumberOfCheckedOutProduct);
+                expect(actualComponent.prop('numberOfCheckedOutProducts')).toEqual(expectedNumberOfCheckedOutProduct);
             });
         });
     });
