@@ -2,8 +2,12 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-export const ButtonView = ({ text, onClickHandler }) => (
-    <button className={ styles.button } aria-label={ text } onClick={ onClickHandler }>
+export const ButtonView = ({ checkedOut, text, onClickHandler }) => (
+    <button
+        className={ ` ${ styles.button } ${ checkedOut ? styles.red : styles.green }` }
+        aria-label={ text }
+        onClick={ onClickHandler }
+    >
         { text }
     </button>
 );
