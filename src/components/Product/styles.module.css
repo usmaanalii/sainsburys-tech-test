@@ -1,3 +1,28 @@
 .container {
     border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 300px;
+    height: 400px;
+
+    margin: 20px;
+}
+
+.image {
+    align-self: center;
+
+    margin: 10px 0;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.price {
+    text-align: center;
 }

@@ -6,6 +6,14 @@ import { ProductsContext } from '../../context';
 import { Home } from '../Home';
 import { Checkout } from '../Checkout';
 
+/**
+ * TODO:
+ * 1. Transform the price to add .00 if the price is returned without pences
+ * 2. Ensure the product components elements align (e.g the image, text and button are all at the same height)
+ * 3. Add an "empty shopping cart" view
+ * 4. Refactor the products container into it's own component
+ */
+
 
 export const App = () => {
     const [products, updateProducts] = useState([]);

@@ -7,18 +7,17 @@ import styles from './styles.module.css';
 export const ProductView = ({
     productId,
     title,
-    sku,
     price,
     image,
     checkedOut,
     updateCheckedOutProducts
 }) => (
     <section className={ styles.container }>
-        <img alt={ title } src={ image } />
+        <img className={ styles.image } alt={ title } src={ image } />
 
-        <h1>{ title }, { sku }</h1>
+        <h1 className={ styles.title }>{ title }</h1>
 
-        <h2>{ price }</h2>
+        <h2 className={ styles.price }>£{ price }</h2>
 
         <Button
             checkedOut={ checkedOut }
