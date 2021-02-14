@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 import { Product } from '../Product';
 
 export const CheckoutView = ({ products, totalPrice, updateCheckedOutProducts }) => (
-    <div>
-        <div>
+    <Fragment>
+        <header>
             <Link to="/">Return to shopping</Link>
-        </div>
+        </header>
 
-        <div>
+        <main>
+            {
+                products.map(productData => (
+                    <Product
+                        key={productData.productId}
+                        { ...{...productData, updateCheckedOutProducts} }
+                    />
+                ))
+            }
+        </main>
+
+        <footer>
             Your total is { totalPrice }
-        </div>
-
-        {
-            products.map(productData => (
-                <Product
-                    key={productData.productId}
-                    { ...{...productData, updateCheckedOutProducts} }
-                />
-            ))
-        }
-    </div>
+        </footer>
+    </Fragment>
 );

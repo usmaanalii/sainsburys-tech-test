@@ -41,6 +41,10 @@ describe('Given the Home view component', () => {
         beforeEach(() => {
             actualComponent = shallow(<HomeView { ...mockedProps } />);
         });
+
+        it('Then should contain a single header element', () => {
+            expect(actualComponent.find('header')).toHaveLength(1);
+        });
         
         it('Then should contain a single Link element', () => {
             expect(actualComponent.find(Link)).toHaveLength(1);
@@ -52,6 +56,10 @@ describe('Given the Home view component', () => {
 
         it('Then should a single Link with the expected text', () => {
             expect(actualComponent.find(Link).text()).toBe(mockedLinkText);
+        });
+
+        it('Then should contain a single main element', () => {
+            expect(actualComponent.find('main')).toHaveLength(1);
         });
 
         it('Then should contain the correct number of Product components', () => {

@@ -13,16 +13,16 @@ export const ProductView = ({
     checkedOut,
     updateCheckedOutProducts
 }) => (
-    <div className={ styles.container }>
-        <img alt="product" src={ image } />
+    <section className={ styles.container }>
+        <img alt={ title } src={ image } />
 
-        <div>{ title }, { sku }</div>
+        <h1>{ title }, { sku }</h1>
 
-        <div>{ price }</div>
+        <h2>{ price }</h2>
 
         <Button
             checkedOut={ checkedOut }
             onClickHandler={ () => updateCheckedOutProducts(productId) }
         />
-    </div>
+    </section>
 );

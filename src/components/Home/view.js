@@ -5,16 +5,19 @@ import { Product } from '../Product';
 
 export const HomeView = ({ products, numberOfCheckedOutProducts, updateCheckedOutProducts }) => (
     <Fragment>
-        <Link to="/checkout">Checkout ({ numberOfCheckedOutProducts })</Link>
-
-        {
-            products.map(productData => (
-                <Product
-                    key={productData.productId}
-                    { ...{...productData, updateCheckedOutProducts} }
-                />
-            ))
-        }
-
+        <header>
+            <Link to="/checkout">Checkout ({ numberOfCheckedOutProducts })</Link>
+        </header>
+        
+        <main>
+            {
+                products.map(productData => (
+                    <Product
+                        key={productData.productId}
+                        { ...{...productData, updateCheckedOutProducts} }
+                    />
+                ))
+            }
+        </main>
     </Fragment>
 );

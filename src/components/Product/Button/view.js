@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const ButtonView = ({ text, onClickHandler }) => <button onClick={ onClickHandler }>{ text }</button>;
+export const ButtonView = ({ text, onClickHandler }) => <button aria-label={ text } onClick={ onClickHandler }>{ text }</button>;
